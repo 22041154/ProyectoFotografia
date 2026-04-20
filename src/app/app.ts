@@ -1,12 +1,14 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component } from '@angular/core';
+import { GaleriaComponent } from './components/galeria/galeria';
+import { UploadComponent } from './components/upload/upload';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  standalone: true,
+  imports: [GaleriaComponent, UploadComponent],
   templateUrl: './app.html',
-  styleUrl: './app.scss'
+  styleUrls: ['./app.css']
 })
-export class App {
-  protected readonly title = signal('frontend-fotografia');
+export class AppComponent {
+  title = 'frontend-fotografia';
 }

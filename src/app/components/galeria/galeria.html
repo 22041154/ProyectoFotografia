@@ -1,0 +1,11 @@
+<section class="portfolio">
+  <div class="grid">
+    <div class="card" *ngFor="let foto of fotos">
+      <img [src]="foto.url_imagen" [alt]="foto.titulo">
+      <div class="info">
+        <h3>{{ foto.titulo }}</h3>
+        <p>{{ foto.categoria }}</p>
+      </div>
+    </div>
+  </div>
+</section>

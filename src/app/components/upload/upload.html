@@ -1,0 +1,51 @@
+<div class="card shadow-sm mb-5 border-0">
+  <div class="card-header bg-dark text-white p-3">
+    <h5 class="mb-0"><i class="bi bi-cloud-arrow-up"></i> Agregar Nueva Fotografía al Portafolio</h5>
+  </div>
+  
+  <div class="card-body bg-light p-4">
+    @if (mensajeExito) {
+      <div class="alert alert-success shadow-sm">
+        <i class="bi bi-check-circle-fill"></i> ¡Fotografía subida con éxito! Actualizando galería...
+      </div>
+    }
+
+    <div class="row g-3">
+      <div class="col-md-6">
+        <label class="form-label fw-bold">Título de la obra</label>
+        <input type="text" class="form-control" #tituloInput placeholder="Ej: Atardecer en la playa">
+      </div>
+
+      <div class="col-md-6">
+        <label class="form-label fw-bold">Categoría</label>
+        <select class="form-select" #categoriaInput>
+          <option value="" disabled selected>Selecciona una categoría...</option>
+          <option value="Bodas">Bodas</option>
+          <option value="Retratos">Retratos</option>
+          <option value="Paisajes">Paisajes</option>
+          <option value="Eventos">Eventos</option>
+          <option value="Estudio">Estudio</option>
+        </select>
+      </div>
+
+      <div class="col-12">
+        <label class="form-label fw-bold">Archivo de Imagen (.jpg, .png)</label>
+        <input type="file" class="form-control" (change)="onFileSelected($event)" accept="image/*">
+      </div>
+
+      <div class="col-12 text-end mt-4">
+        <button class="btn btn-primary px-4 py-2" 
+                (click)="subirFoto(tituloInput.value, categoriaInput.value)" 
+                [disabled]="cargando">
+          
+          @if (cargando) {
+            <span class="spinner-border spinner-border-sm" aria-hidden="true"></span> Subiendo a la nube...
+          } @else {
+            <i class="bi bi-upload"></i> Publicar Foto
+          }
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
