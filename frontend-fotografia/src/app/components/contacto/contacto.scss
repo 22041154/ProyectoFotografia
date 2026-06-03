@@ -1,0 +1,129 @@
+.contacto {
+  padding: 6rem 5rem;
+  background: #f9f9f9;
+
+  .contacto-header {
+    text-align: center;
+    margin-bottom: 3.5rem;
+
+    h2 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #111;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      color: #666;
+      font-size: 1rem;
+    }
+  }
+
+  .contacto-contenido {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .contacto-info {
+    h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: #111;
+    }
+
+    .info-lista {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+
+      li {
+        display: flex;
+        align-items: center;
+        gap: 0.9rem;
+        font-size: 0.95rem;
+        color: #444;
+
+        svg {
+          color: #e63946;
+          flex-shrink: 0;
+        }
+
+        a {
+          color: #444;
+          text-decoration: none;
+          transition: color 0.2s;
+
+          &:hover {
+            color: #e63946;
+          }
+        }
+      }
+    }
+  }
+
+  .contacto-form {
+    h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: #111;
+    }
+
+    .form-group {
+      margin-bottom: 1rem;
+
+      input, textarea {
+        width: 100%;
+        padding: 0.8rem 1rem;
+        border: 1.5px solid #ddd;
+        border-radius: 6px;
+        font-size: 0.95rem;
+        font-family: inherit;
+        color: #111;
+        background: #fff;
+        transition: border-color 0.2s;
+        resize: none;
+
+        &:focus {
+          outline: none;
+          border-color: #111;
+        }
+
+        &::placeholder {
+          color: #aaa;
+        }
+      }
+    }
+
+    .enviar-btn {
+      width: 100%;
+      padding: 0.85rem;
+      background: #25d366;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+
+      &:hover {
+        background: #1ebe57;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 4rem 1.5rem;
+
+    .contacto-contenido {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+  }
+}

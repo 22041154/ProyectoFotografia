@@ -1,0 +1,26 @@
+<div class="modal-backdrop" *ngIf="visible" (click)="cerrar()">
+  <div class="modal" (click)="$event.stopPropagation()">
+    <h2>Acceso Fotógrafo</h2>
+
+    <div class="form-group">
+      <input
+        type="email"
+        placeholder="Correo"
+        [(ngModel)]="correo"
+      />
+    </div>
+
+    <div class="form-group">
+      <input
+        type="password"
+        placeholder="Contraseña"
+        [(ngModel)]="contrasena"
+      />
+    </div>
+
+    <div class="error" *ngIf="error">{{ error }}</div>
+
+    <button class="btn-entrar" (click)="entrar()">Entrar</button>
+    <button class="btn-cerrar" (click)="cerrar()">Cerrar</button>
+  </div>
+</div>

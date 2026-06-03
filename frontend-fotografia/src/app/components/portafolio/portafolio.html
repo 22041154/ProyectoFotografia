@@ -1,0 +1,24 @@
+<div class="portafolio">
+  <div class="portafolio-header">
+    <h2>Portafolio</h2>
+    <p>Explora una selección de mis trabajos más representativos.</p>
+  </div>
+
+  <div class="filtros">
+    <button
+      *ngFor="let cat of categorias"
+      [class.activo]="categoriaActiva === cat"
+      (click)="filtrar(cat)">
+      {{ cat }}
+    </button>
+  </div>
+
+  <div class="grid">
+    <div class="card" *ngFor="let foto of fotosFiltradas">
+      <img [src]="foto.url" [alt]="foto.titulo" />
+      <div class="card-overlay">
+        <span>{{ foto.titulo }}</span>
+      </div>
+    </div>
+  </div>
+</div>
