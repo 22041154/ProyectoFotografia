@@ -10,12 +10,6 @@
   z-index: 1000;
 }
 
-.logo h3 {
-  margin: 0;
-  font-family: 'Arial', sans-serif; /* Puedes cambiar la fuente después */
-  font-weight: normal;
-}
-
 .nav-links {
   display: flex;
   list-style: none;
@@ -48,4 +42,16 @@
 
 .btn-admin:hover {
   background-color: #e0e0e0;
+}
+
+.logo img {
+  height: 45px; 
+  width: auto; 
+  display: block;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.logo img:hover {
+  transform: scale(1.05); 
 }

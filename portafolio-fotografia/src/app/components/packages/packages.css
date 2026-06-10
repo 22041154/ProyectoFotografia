@@ -1,0 +1,70 @@
+.packages-section {
+  padding: 80px 20px;
+  background-color: #fafafa; /* Un fondo muy ligeramente gris para diferenciar secciones */
+  text-align: center;
+}
+
+.packages-header h2 {
+  font-size: 2.5rem;
+  color: #111;
+  margin-bottom: 10px;
+}
+
+.packages-header p {
+  color: #555;
+  font-size: 1.1rem;
+  margin-bottom: 50px;
+}
+
+.error-msg-red {
+  color: #e60023; /* Rojo para el error */
+  font-size: 1rem;
+  margin-top: 20px;
+}
+
+.admin-package-card {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  max-width: 500px;
+  margin: 0 auto 40px auto;
+  text-align: left;
+}
+
+.field {
+  margin-bottom: 15px;
+}
+
+.field label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #666;
+}
+
+.field input, .field textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+/* Estilo para el botón de guardar rojo */
+.btn-save-red {
+  width: 100%;
+  background-color: #e60023;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  margin-top: 10px;
+}
+
+.btn-save-red:hover {
+  background-color: #cc001f;
+}

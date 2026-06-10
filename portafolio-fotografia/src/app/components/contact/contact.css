@@ -1,0 +1,96 @@
+.contact-section {
+  padding: 80px 20px 120px 20px;
+  background-color: #fcfcfc;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contact-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.contact-header h2 {
+  font-size: 2.5rem;
+  color: #111;
+  margin-bottom: 10px;
+}
+
+.contact-header p {
+  color: #555;
+  font-size: 1.1rem;
+}
+
+.contact-card {
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.08); /* Sombra amplia y suave */
+  padding: 40px;
+  width: 100%;
+  max-width: 400px; /* Ancho de la tarjeta */
+  text-align: center;
+}
+
+.contact-card h3 {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 25px;
+}
+
+.contact-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.contact-list li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.contact-list a {
+  text-decoration: none;
+  color: #444;
+  font-size: 1rem;
+  transition: color 0.3s;
+}
+
+.contact-list a:hover {
+  color: #e60023;
+}
+
+.icon {
+  font-size: 1.2rem;
+}
+
+/* Colores simulados para los emojis/iconos */
+.icon.insta { color: #E1306C; filter: grayscale(0%); }
+.icon.mail { color: #D44638; }
+.icon.wa { color: #25D366; }
+.icon.pin { color: #e60023; }
+
+.divider {
+  border: none;
+  border-top: 1px solid #eee;
+  margin: 30px 0;
+}
+
+.location {
+  color: #444;
+}
+
+.location p {
+  margin: 5px 0;
+  font-size: 1rem;
+}
+
+.location .city {
+  color: #777;
+  font-size: 0.95rem;
+}

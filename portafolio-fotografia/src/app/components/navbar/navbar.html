@@ -1,8 +1,9 @@
 <header class="navbar">
   <div class="logo">
-    <h3>Elí Aramburo</h3>
+    <a href="#inicio">
+      <img src="images/logo.jpeg" alt="Logo Elí Aramburo">
+    </a>
   </div>
-
   <nav>
     <ul class="nav-links">
       <li><a href="#inicio">Inicio</a></li>
@@ -13,7 +14,7 @@
     </ul>
   </nav>
 
-  <div class="admin-action">
-    <button class="btn-admin">Vista Admin</button>
-  </div>
+    <button class="btn-admin" (click)="toggleAdmin()">
+    {{ adminService.isAdmin() ? 'Cerrar Sesión' : 'Vista Admin' }}
+    </button>
 </header>

@@ -1,0 +1,94 @@
+<section id="portafolio" class="portfolio-section">
+  <div class="portfolio-header">
+    <h2>Portafolio</h2>
+    <p>Explora una selección de mis trabajos más representativos.</p>
+  </div>
+
+  @if (adminService.isAdmin()) {
+    <div class="admin-form-container">
+      
+      <div class="admin-categories-manager">
+        <div class="form-header">
+          <i class="bi bi-tags-fill" style="font-size: 1.2rem;"></i> <strong>Gestionar Filtros / Categorías</strong>
+        </div>
+        
+        <div class="categories-editable-list">
+          @for (cat of categorias(); track cat.id) {
+            @if (cat.id !== 'todos') {
+              <span class="category-edit-pill">
+                {{ cat.name }}
+                <i class="bi bi-x-circle-fill delete-cat-icon" (click)="eliminarCategoria(cat.id)" title="Eliminar categoría"></i>
+              </span>
+            }
+          }
+        </div>
+
+        <div class="add-category-row">
+          <input type="text" #nuevaCatInput placeholder="Nueva Categoría (Ej: Eventos, Graduaciones)">
+          <button class="btn-add-cat" (click)="agregarCategoria(nuevaCatInput.value); nuevaCatInput.value = ''">
+            Añadir Filtro
+          </button>
+        </div>
+      </div>
+
+      <hr class="admin-divider">
+
+      <div class="form-header">
+        <i class="bi bi-link-45deg" style="font-size: 1.2rem;"></i> <strong>Agregar Nueva Foto</strong>
+      </div>
+      <p class="form-instructions">Instrucciones: Sube tu foto a <a href="https://postimages.org/" target="_blank">Postimages</a>, copia el "Enlace directo" y pégalo abajo.</p>
+      
+      <div class="form-grid">
+        <input type="text" #tituloInput placeholder="Título (Ej: Boda María)">
+        <input type="text" #camaraInput placeholder="Cámara (Ej: Sony A7III)">
+        <select #categoriaInput>
+          <option value="" disabled selected>Selecciona una categoría...</option>
+          @for (cat of categorias(); track cat.id) {
+            @if (cat.id !== 'todos') { <option [value]="cat.name">{{ cat.name }}</option> }
+          }
+        </select>
+        <input type="text" #urlInput placeholder="Pega aquí el enlace de la foto (https://...)">
+      </div>
+      <textarea #descInput placeholder="Descripción o historia de la foto..."></textarea>
+      
+      <button class="btn-save-red" (click)="
+        agregarFoto(tituloInput.value, camaraInput.value, categoriaInput.value, urlInput.value, descInput.value);
+        tituloInput.value = ''; camaraInput.value = ''; urlInput.value = ''; descInput.value = '';
+      ">
+        Guardar en Portafolio
+      </button>
+    </div>
+  }
+
+  <div class="portfolio-filters">
+    @for (cat of categorias(); track cat.id) {
+      <button 
+        class="filter-btn" 
+        [class.active]="categoriaSeleccionada() === cat.name" 
+        (click)="seleccionarCategoria(cat.name)">
+        {{ cat.name }}
+      </button>
+    }
+  </div>
+
+  <div class="portfolio-content">
+    @if (fotosFiltradas().length > 0) {
+      <div class="photo-grid">
+        @for (foto of fotosFiltradas(); track foto.id) {
+          <div class="photo-card" (click)="abrirModal(foto)">
+            <img [src]="foto.url" [alt]="foto.titulo">
+            <div class="overlay-text">{{ foto.titulo }}</div>
+            
+            @if (adminService.isAdmin()) {
+              <button class="btn-delete-photo" (click)="eliminarFoto(foto.id, $event)">
+                <i class="bi bi-trash3-fill"></i>
+              </button>
+            }
+          </div>
+        }
+      </div>
+    } @else {
+      <p class="error-msg">Aún no hay fotos en esta categoría.</p>
+    }
+  </div>
+</section>

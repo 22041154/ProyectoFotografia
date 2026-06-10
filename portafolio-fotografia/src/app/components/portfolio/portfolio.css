@@ -1,0 +1,377 @@
+.portfolio-section {
+  padding: 80px 20px;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.portfolio-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.portfolio-header h2 {
+  font-size: 2.5rem;
+  color: #111;
+  margin-bottom: 15px;
+}
+
+.portfolio-header p {
+  color: #555;
+  font-size: 1.1rem;
+}
+
+.portfolio-filters {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 50px;
+  flex-wrap: wrap; /* Permite que los botones bajen de línea si no caben */
+  justify-content: center;
+}
+
+.filter-btn {
+  background-color: #f4f4f4;
+  color: #333;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 30px; /* Hace que el botón parezca una píldora */
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+  background-color: #e0e0e0;
+}
+
+/* Estilo para el botón seleccionado (negro con texto blanco) */
+.filter-btn.active {
+  background-color: #111;
+  color: #ffffff;
+}
+
+.portfolio-content {
+  width: 100%;
+  max-width: 1200px;
+  min-height: 100px;
+}
+
+.error-msg {
+  color: #555;
+  font-size: 0.9rem;
+}
+
+.admin-form-container {
+  border: 1px dashed #ccc;
+  border-radius: 10px;
+  padding: 25px;
+  width: 100%;
+  max-width: 1100px;
+  margin-bottom: 40px;
+  background-color: #fcfcfc;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.admin-form-container input, .admin-form-container select, .admin-form-container textarea {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 0.9rem;
+}
+
+.admin-form-container textarea {
+  width: 100%;
+  height: 80px;
+  margin-bottom: 15px;
+  resize: none;
+}
+
+.btn-save-red {
+  width: 100%;
+  background-color: #e60023;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* --- ESTILOS DE LA GALERÍA --- */
+.photo-grid {
+  display: grid;
+  /* Crea columnas responsivas que se adaptan al tamaño de la pantalla */
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  width: 100%;
+}
+
+.photo-card {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  aspect-ratio: 1 / 1; /* Fotos cuadradas */
+  cursor: pointer;
+}
+
+.photo-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Evita que la foto se deforme */
+  transition: transform 0.3s ease;
+}
+
+.photo-card:hover img {
+  transform: scale(1.05); /* Efecto zoom al pasar el mouse */
+}
+
+/* Texto que aparece sobre la foto */
+.overlay-text {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(transparent, rgba(0,0,0,0.8));
+  color: white;
+  padding: 20px 15px 10px 15px;
+  font-weight: 600;
+  transform: translateY(100%); /* Oculto por defecto */
+  transition: transform 0.3s ease;
+}
+
+.photo-card:hover .overlay-text {
+  transform: translateY(0); /* Aparece al hacer hover */
+}
+
+/* --- ESTILOS DEL MODAL (VISOR DE FOTOS) --- */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.85); /* Fondo oscuro */
+  z-index: 2000; /* Asegura que esté por encima de todo el menú de navegación */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.modal-content {
+  background-color: white;
+  border-radius: 12px;
+  max-width: 1100px;
+  width: 100%;
+  max-height: 90vh; /* No será más alta que la pantalla */
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  animation: zoomIn 0.3s ease; /* Efecto de entrada suave */
+}
+
+.btn-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: rgba(0, 0, 0, 0.05);
+  border: none;
+  color: #333;
+  font-size: 1.5rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background 0.2s;
+}
+
+.btn-close:hover {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.modal-layout {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  max-height: 90vh;
+}
+
+.modal-image {
+  flex: 2; /* Ocupa 2 terceras partes del espacio */
+  background-color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-image img {
+  max-width: 100%;
+  max-height: 90vh;
+  object-fit: contain; /* Ajusta la foto sin recortarla */
+}
+
+.modal-info {
+  flex: 1; /* Ocupa 1 tercera parte */
+  padding: 50px 30px;
+  overflow-y: auto;
+  background-color: #fafafa;
+}
+
+.modal-info h3 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: #111;
+}
+
+.modal-info p {
+  margin-bottom: 12px;
+  color: #444;
+  font-size: 1rem;
+}
+
+.modal-info hr {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 20px 0;
+}
+
+.modal-desc {
+  line-height: 1.6;
+}
+
+/* Animación de entrada */
+@keyframes zoomIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Modo teléfono (Pone la imagen arriba y el texto abajo) */
+@media (max-width: 768px) {
+  .modal-layout {
+    flex-direction: column;
+    overflow-y: auto;
+  }
+  .modal-image img {
+    max-height: 50vh; /* En móviles la foto ocupa la mitad */
+  }
+  .modal-info {
+    padding: 30px 20px;
+  }
+}
+
+/* --- ESTILOS ADICIONALES PARA GESTIÓN DE CATEGORÍAS --- */
+.admin-categories-manager {
+  margin-bottom: 20px;
+}
+
+.categories-editable-list {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 15px 0;
+}
+
+.category-edit-pill {
+  background-color: #eee;
+  color: #333;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #ddd;
+}
+
+.delete-cat-icon {
+  color: #e60023;
+  cursor: pointer;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.delete-cat-icon:hover {
+  transform: scale(1.15);
+  color: #cc001f;
+}
+
+.add-category-row {
+  display: flex;
+  gap: 10px;
+  max-width: 450px;
+  margin-top: 12px;
+}
+
+.add-category-row input {
+  flex: 1;
+}
+
+.btn-add-cat {
+  background-color: #111;
+  color: white;
+  border: none;
+  padding: 0 20px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-add-cat:hover {
+  background-color: #333;
+}
+
+.admin-divider {
+  border: none;
+  border-top: 1px dashed #ccc;
+  margin: 25px 0;
+}
+
+.btn-delete-photo {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: rgba(230, 0, 35, 0.9);
+  color: white;
+  border: none;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.2s;
+  z-index: 10;
+}
+
+.btn-delete-photo:hover {
+  transform: scale(1.1);
+  background-color: #ff002b;
+}
+
+
+

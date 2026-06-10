@@ -1,0 +1,120 @@
+.about-section {
+  padding: 80px 20px;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+}
+
+.about-container {
+  display: flex;
+  align-items: center;
+  max-width: 1000px; /* Ancho máximo para que no se estire demasiado en pantallas grandes */
+  width: 100%;
+  gap: 60px; /* Espacio entre la imagen y el texto */
+}
+
+.about-image {
+  flex: 1; /* Ocupa la mitad del contenedor */
+}
+
+.about-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 15px; /* Bordes redondeados como en tu diseño */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Sombra sutil */
+  object-fit: cover;
+}
+
+.about-text {
+  flex: 1; /* Ocupa la otra mitad */
+}
+
+.about-text h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  color: #111;
+}
+
+.about-text p {
+  color: #555;
+  font-size: 1.1rem;
+}
+
+/* Responsividad básica para pantallas pequeñas */
+@media (max-width: 768px) {
+  .about-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  
+}
+
+.edit-btn-black {
+  background-color: #222;
+  color: white;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* --- ESTILOS MODO EDICIÓN --- */
+.edit-mode-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.edit-mode-container textarea {
+  width: 100%;
+  min-height: 100px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 1rem;
+  color: #333;
+  resize: vertical; /* Permite cambiar el tamaño solo hacia abajo */
+}
+
+.edit-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-save-red {
+  background-color: #e60023;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-save-red:hover {
+  background-color: #cc001f;
+}
+
+.btn-cancel {
+  background-color: #eee;
+  color: #111;
+  border: 1px solid #ddd;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-cancel:hover {
+  background-color: #e0e0e0;
+}
