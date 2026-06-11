@@ -8,9 +8,9 @@ import { AdminService } from '../services/admin';
   styleUrl: './navbar.component.css'
 })
 export class NavbarComponent {
-  adminService = inject(AdminService); // Inyectamos el servicio
+  adminService = inject(AdminService);
 
   toggleAdmin() {
-    this.adminService.toggleAdmin();
+    this.adminService.logout(); 
   }
 }
