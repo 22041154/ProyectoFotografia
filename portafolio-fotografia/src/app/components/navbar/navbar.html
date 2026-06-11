@@ -14,7 +14,17 @@
     </ul>
   </nav>
 
-    <button class="btn-admin" (click)="toggleAdmin()">
-    {{ adminService.isAdmin() ? 'Cerrar Sesión' : 'Vista Admin' }}
-    </button>
+  <button class="btn-admin" (click)="toggleAdmin()">
+    {{ adminService.isAdmin() ? 'Cerrar Sesión' : 'Iniciar Sesión' }}
+  </button>
+
+  <!-- Modal de Login -->
+  @if (showLoginModal()) {
+    <div class="modal-overlay" (click)="closeLoginModal()">
+      <div class="modal-content" (click)="$event.stopPropagation()">
+        <button class="close-btn" (click)="closeLoginModal()">✕</button>
+        <app-login></app-login>
+      </div>
+    </div>
+  }
 </header>
