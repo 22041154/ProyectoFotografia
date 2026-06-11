@@ -1,0 +1,21 @@
+<div class="login-container">
+  <div class="login-card">
+    <h2>Acceso Administrador</h2>
+    
+    <div class="input-group">
+      <input type="email" #emailInput placeholder="Correo electrónico" (keyup.enter)="iniciarSesion(emailInput.value, passInput.value)">
+    </div>
+    
+    <div class="input-group">
+      <input type="password" #passInput placeholder="Contraseña" (keyup.enter)="iniciarSesion(emailInput.value, passInput.value)">
+    </div>
+    
+    @if (error()) {
+      <p class="error-msg">{{ error() }}</p>
+    }
+    
+    <button class="btn-login" (click)="iniciarSesion(emailInput.value, passInput.value)">
+      Entrar
+    </button>
+  </div>
+</div>

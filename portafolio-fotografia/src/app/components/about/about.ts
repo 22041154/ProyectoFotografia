@@ -12,8 +12,11 @@ export class About implements OnInit {
   adminService = inject(AdminService);
   http = inject(HttpClient);
 
-  semblanzaText = signal('Cargando semblanza desde la base de datos...');
+  semblanzaText = signal('Cargando semblanza...');
+  // Añadimos una señal para guardar la URL de la imagen que viene de la BD
+  imagenUrl = signal('assets/profile.jpg'); 
   isEditing = signal(false);
+  archivoSeleccionado: File | undefined;
 
   ngOnInit() {
     this.cargarSemblanza();
@@ -21,10 +24,15 @@ export class About implements OnInit {
 
   cargarSemblanza() {
     this.http.get<any>('http://localhost:3000/about').subscribe(data => {
-      if (data && data.texto) {
-        this.semblanzaText.set(data.texto);
+      if (data) {
+        if (data.texto) this.semblanzaText.set(data.texto);
+        if (data.imagenUrl) this.imagenUrl.set(data.imagenUrl);
       }
     });
+  }
+
+  onFileSelected(event: any) {
+    this.archivoSeleccionado = event.target.files[0];
   }
 
   guardarCambios(nuevoTexto: string) {
@@ -33,19 +41,21 @@ export class About implements OnInit {
       return;
     }
 
-    this.http.post('http://localhost:3000/about', { texto: nuevoTexto }).subscribe(() => {
+    const formData = new FormData();
+    formData.append('texto', nuevoTexto);
+    if (this.archivoSeleccionado) {
+      formData.append('file', this.archivoSeleccionado);
+    }
+
+    this.http.post('http://localhost:3000/about', formData).subscribe((data: any) => {
       this.semblanzaText.set(nuevoTexto);
-      this.isEditing.set(false); 
-      alert('¡Semblanza actualizada en la nube con éxito!');
+      if (data.imagenUrl) this.imagenUrl.set(data.imagenUrl);
+      this.isEditing.set(false);
+      this.archivoSeleccionado = undefined;
+      alert('¡Actualizado con éxito!');
     });
   }
 
-
-  activarEdicion() {
-    this.isEditing.set(true);
-  }
-
-  cancelarEdicion() {
-    this.isEditing.set(false);
-  }
+  activarEdicion() { this.isEditing.set(true); }
+  cancelarEdicion() { this.isEditing.set(false); }
 }

@@ -68,3 +68,207 @@
 .btn-save-red:hover {
   background-color: #cc001f;
 }
+/* --- ESTILOS DEL FORMULARIO DE PAQUETES (TARJETA) --- */
+.admin-package-card {
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 30px;
+  max-width: 450px;
+  margin: 0 auto 40px auto;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  font-family: inherit;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 25px;
+  color: #121826;
+}
+
+.card-header h3 {
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.card-header i {
+  font-size: 1.6rem;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #4a5568;
+  margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  font-size: 1rem;
+  color: #2d3748;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #d90022;
+}
+
+.form-group textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.btn-save-package {
+  width: 100%;
+  background-color: #e50027; /* Rojo de tu diseño */
+  color: white;
+  border: none;
+  padding: 14px;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+  margin-top: 10px;
+}
+
+.btn-save-package:hover {
+  background-color: #cc0022;
+}
+
+.btn-save-package:active {
+  transform: scale(0.98);
+}
+
+/* --- GRID DE PAQUETES --- */
+.packages-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 35px;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* --- TARJETA INDIVIDUAL (ESTILO FORMULARIO / ETIQUETA) --- */
+.package-card {
+  background-color: #ffffff;
+  border-radius: 16px; /* Mismo borde exacto que el formulario de admin */
+  padding: 30px; /* Mismo espaciado interno que el formulario */
+  width: 100%;
+  max-width: 300px;
+  position: relative;
+  text-align: center;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08); /* Misma sombra suave del formulario */
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  border-top: 6px solid #e50027; /* Línea de acento simulando el "colgante" de la etiqueta */
+}
+
+.package-card:hover {
+  transform: translateY(-5px);
+}
+
+/* --- ETIQUETA SUPERIOR (TIPO TICKET) --- */
+.package-badge {
+  display: inline-block;
+  background-color: #f8f9fa;
+  color: #e50027; /* Rojo para combinar con el botón de guardar del admin */
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 6px 16px;
+  border-radius: 8px; /* Cuadradito, igual que los inputs del formulario */
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  align-self: center;
+  border: 1px dashed #cbd5e1; /* Borde punteado para darle el efecto físico de etiqueta */
+}
+
+/* --- TEXTOS Y PRECIO --- */
+.package-card h3 {
+  font-size: 1.5rem;
+  color: #121826;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.package-card .price {
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: #121826;
+  margin-bottom: 25px;
+  padding-bottom: 25px;
+  border-bottom: 2px dashed #e2e8f0; /* Línea punteada de desprendimiento tipo ticket */
+}
+
+/* --- ARREGLO DE LA LISTA --- */
+.features-list {
+  list-style: none; 
+  padding: 0;
+  margin: 0 0 30px 0;
+  text-align: left; 
+  flex-grow: 1;
+}
+
+.features-list li {
+  padding: 8px 0;
+  color: #4a5568;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.features-list li i {
+  color: #e50027; /* Palomitas rojas para mantener la armonía de color */
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+/* --- BOTÓN DE SOLICITAR INFORMACIÓN (Estilo Formulario) --- */
+.btn-contact-package {
+  width: 100%;
+  background-color: #ffffff;
+  color: #e50027;
+  border: 2px solid #e50027;
+  padding: 12px;
+  border-radius: 12px; /* Mismos bordes curvos del botón "Guardar" rojo */
+  font-weight: 700;
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: auto;
+}
+
+.btn-contact-package:hover {
+  background-color: #e50027;
+  color: #ffffff;
+}
+
+/* Posicionar el botón de eliminar del admin */
+.package-card .btn-delete-photo {
+  top: 15px;
+  right: 15px;
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  font-size: 0.9rem;
+}

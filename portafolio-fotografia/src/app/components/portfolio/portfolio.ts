@@ -23,6 +23,9 @@ export class Portfolio implements OnInit {
   // Guardará la información de la foto a la que se le dio clic
   fotoSeleccionada = signal<any>(null);
 
+  // --- VARIABLE PARA GUARDAR LA IMAGEN ANTES DE SUBIRLA ---
+  archivoSeleccionado: File | undefined;
+
   fotosFiltradas = computed(() => {
     const actual = this.categoriaSeleccionada();
     if (actual === 'Todos') return this.fotos();
@@ -76,18 +79,35 @@ export class Portfolio implements OnInit {
     });
   }
 
-  agregarFoto(titulo: string, camara: string, categoria: string, url: string, descripcion: string) {
-    // Validación básica para que no envíen fotos vacías
-    if (!titulo || !url || !categoria) {
-      alert('Por favor, llena al menos el título, la categoría y el enlace.');
+  // Función que atrapa el archivo cuando lo seleccionas en el input HTML
+  onFileSelected(event: any) {
+    const file: File = event.target.files[0];
+    if (file) {
+      this.archivoSeleccionado = file;
+    }
+  }
+
+  // Ya no pedimos el archivo como parámetro, lo tomamos de la variable
+  agregarFoto(titulo: string, camara: string, categoria: string, descripcion: string) {
+    // 1. Validamos que realmente hayan elegido una imagen usando la variable de la clase
+    if (!titulo || !categoria || !this.archivoSeleccionado) {
+      alert('Por favor, llena el título, la categoría y selecciona una imagen.');
       return;
     }
 
-    const nuevaFoto = { titulo, camara, categoria, url, descripcion };
+    // 2. Empacamos los datos como un formulario real (multipart/form-data)
+    const formData = new FormData();
+    formData.append('titulo', titulo);
+    formData.append('camara', camara);
+    formData.append('categoria', categoria);
+    formData.append('descripcion', descripcion);
+    formData.append('file', this.archivoSeleccionado); // Aquí va el archivo pesado guardado
 
-    this.http.post('http://localhost:3000/photos', nuevaFoto).subscribe(() => {
-      this.cargarFotos(); // Recargamos la galería
-      alert('¡Foto guardada con éxito!');
+    // 3. Enviamos el paquete completo al backend
+    this.http.post('http://localhost:3000/photos', formData).subscribe(() => {
+      this.cargarFotos(); 
+      this.archivoSeleccionado = undefined; // Limpiamos la variable para la siguiente foto
+      alert('¡Foto subida y guardada con éxito!');
     });
   }
 

@@ -11,6 +11,6 @@ export class Navbar {
   adminService = inject(AdminService); 
 
   toggleAdmin() {
-    this.adminService.toggleAdmin();
+    this.adminService.logout();
   }
 }

@@ -56,3 +56,107 @@ html {
   background-color: #cc001f;
   transform: scale(1.05); /* Pequeño efecto de zoom al pasar el mouse */
 }
+.hero-section {
+  position: relative; /* Necesario para que el botón se posicione respecto a esta sección */
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+}
+
+.edit-hero-btn {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background: #111;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+}
+/* Asegura que la sección sea un contenedor relativo */
+.hero-section {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+}
+
+/* Diseño del botón "Ver Portafolio" */
+.btn-ver-portafolio {
+  background-color: #e60023; /* Tu color rojo característico */
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: transform 0.2s;
+}
+
+.btn-ver-portafolio:hover {
+  transform: scale(1.05);
+  background-color: #ff002b;
+}
+
+/* Modal de edición (el fondo del formulario) */
+/* --- ESTILO DEL PANEL DE ADMINISTRACIÓN (Arriba a la izquierda) --- */
+.hero-edit-modal {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 15px 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  z-index: 100;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.hero-edit-modal input {
+  font-size: 0.9rem;
+  max-width: 180px;
+}
+
+.hero-edit-modal button {
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+.hero-edit-modal button:first-of-type { background: #111; color: white; } /* Guardar */
+.hero-edit-modal button:last-of-type { background: #ddd; } /* Cancelar */
+
+/* --- ESTILO DEL BOTÓN "VER PORTAFOLIO" (Sin subrayado) --- */
+.btn-ver-portafolio {
+  display: inline-block; /* Importante para que tome el diseño de botón */
+  text-decoration: none; /* QUITA EL SUBRAYADO */
+  background-color: #e60023;
+  color: white !important;
+  padding: 12px 30px;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
+  border: none;
+}
+
+.btn-ver-portafolio:hover {
+  transform: scale(1.05);
+  background-color: #ff002b;
+  text-decoration: none; /* Asegura que no aparezca al pasar el mouse */
+}

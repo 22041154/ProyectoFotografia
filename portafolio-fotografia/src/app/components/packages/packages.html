@@ -1,32 +1,75 @@
 <section id="paquetes" class="packages-section">
   <div class="packages-header">
-    <h2>Paquetes de Servicios</h2>
-    <p>Soluciones a la medida.</p>
+    <h2>Paquetes y Servicios</h2>
+    <p>Invierte en recuerdos que durarán toda la vida.</p>
   </div>
-  @if (adminService.isAdmin()) {
-  <div class="admin-package-card">
-    <h3><i class="bi bi-tags-fill"></i> Administrar Paquetes</h3>
-    <div class="field">
-      <label>Etiqueta (Ej: XV Años)</label>
-      <input type="text" placeholder="XV Años">
-    </div>
-    <div class="field">
-      <label>Título del Paquete</label>
-      <input type="text" placeholder="Paquete Básico">
-    </div>
-    <div class="field">
-      <label>Precio</label>
-      <input type="text" placeholder="$500">
-    </div>
-    <div class="field">
-      <label>Características (Sepáralas con comas)</label>
-      <textarea placeholder="Ej: 5 horas, 30 fotos, Edición digital"></textarea>
-    </div>
-    <button class="btn-save-red">Guardar</button>
-  </div>
-}
 
-  <div class="packages-content">
-    <p class="error-msg-red">Error al cargar paquetes.</p>
+  @if (adminService.isAdmin()) {
+    <div class="admin-package-card">
+      
+      <div class="card-header">
+        <i class="bi bi-tags-fill"></i> <h3>Administrar Paquetes</h3>
+      </div>
+      
+      <div class="form-group">
+        <label>Etiqueta (Ej: XV Años)</label>
+        <input type="text" #etiquetaInput placeholder="XV Años">
+      </div>
+
+      <div class="form-group">
+        <label>Título del Paquete</label>
+        <input type="text" #tituloInput placeholder="Paquete Básico">
+      </div>
+
+      <div class="form-group">
+        <label>Precio</label>
+        <input type="number" #precioInput placeholder="500">
+      </div>
+
+      <div class="form-group">
+        <label>Características (Sepáralas con comas)</label>
+        <textarea #caractInput placeholder="Ej: 5 horas, 30 fotos, Edición digital"></textarea>
+      </div>
+      
+      <button class="btn-save-package" (click)="
+        agregarPaquete(etiquetaInput.value, tituloInput.value, precioInput.value, caractInput.value);
+        etiquetaInput.value = ''; tituloInput.value = ''; precioInput.value = ''; caractInput.value = '';
+      ">
+        Guardar
+      </button>
+
+    </div>
+  }
+  <!-- Tarjetas de Paquetes (Vista Pública) -->
+  <div class="packages-grid">
+    @for (paquete of paquetes(); track paquete.id) {
+      <div class="package-card">
+        
+        <!-- Botón de eliminar (Solo Admin) -->
+        @if (adminService.isAdmin()) {
+          <button class="btn-delete-photo" (click)="eliminarPaquete(paquete.id)">
+            <i class="bi bi-trash3-fill"></i>
+          </button>
+        }
+        
+        <!-- Etiqueta que agregamos -->
+        @if (paquete.etiqueta) {
+          <span class="package-badge"><i class="bi bi-tag-fill"></i> {{ paquete.etiqueta }}</span>
+        }
+        
+        <h3>{{ paquete.titulo }}</h3>
+        <div class="price">${{ paquete.precio }}</div>
+        
+        <ul class="features-list">
+          @for (item of paquete.caracteristicas; track item) {
+            <li><i class="bi bi-check2"></i> {{ item }}</li>
+          }
+        </ul>
+        
+        <button class="btn-contact-package" (click)="irAContacto()">Solicitar Información</button>
+      </div>
+      
+    }
   </div>
+  
 </section>

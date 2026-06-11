@@ -34,9 +34,9 @@
       <hr class="admin-divider">
 
       <div class="form-header">
-        <i class="bi bi-link-45deg" style="font-size: 1.2rem;"></i> <strong>Agregar Nueva Foto</strong>
+        <i class="bi bi-cloud-arrow-up-fill" style="font-size: 1.2rem;"></i> <strong>Agregar Nueva Foto</strong>
       </div>
-      <p class="form-instructions">Instrucciones: Sube tu foto a <a href="https://postimages.org/" target="_blank">Postimages</a>, copia el "Enlace directo" y pégalo abajo.</p>
+      <p class="form-instructions">Selecciona una imagen desde tus archivos para subirla a la galería.</p>
       
       <div class="form-grid">
         <input type="text" #tituloInput placeholder="Título (Ej: Boda María)">
@@ -47,13 +47,17 @@
             @if (cat.id !== 'todos') { <option [value]="cat.name">{{ cat.name }}</option> }
           }
         </select>
-        <input type="text" #urlInput placeholder="Pega aquí el enlace de la foto (https://...)">
+        
+        <div class="file-upload-container">
+          <input type="file" id="fotoUpload" accept="image/*" class="file-upload-input" (change)="onFileSelected($event)">
+        </div>
+
       </div>
       <textarea #descInput placeholder="Descripción o historia de la foto..."></textarea>
       
       <button class="btn-save-red" (click)="
-        agregarFoto(tituloInput.value, camaraInput.value, categoriaInput.value, urlInput.value, descInput.value);
-        tituloInput.value = ''; camaraInput.value = ''; urlInput.value = ''; descInput.value = '';
+        agregarFoto(tituloInput.value, camaraInput.value, categoriaInput.value, descInput.value);
+        tituloInput.value = ''; camaraInput.value = ''; descInput.value = '';
       ">
         Guardar en Portafolio
       </button>
@@ -91,4 +95,39 @@
       <p class="error-msg">Aún no hay fotos en esta categoría.</p>
     }
   </div>
+  @if (fotoSeleccionada()) {
+  <div class="modal-overlay" (click)="cerrarModal()">
+    
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      
+      <button class="btn-close-modal" (click)="cerrarModal()">
+        <i class="bi bi-x-lg"></i>
+      </button>
+      
+      <div class="modal-layout">
+        <div class="modal-image-container">
+          <img [src]="fotoSeleccionada().url" [alt]="fotoSeleccionada().titulo">
+        </div>
+        
+        <div class="modal-info-container">
+          <h3>{{ fotoSeleccionada().titulo }}</h3>
+          
+          <div class="info-badges">
+            <span class="badge"><i class="bi bi-tag-fill"></i> {{ fotoSeleccionada().categoria }}</span>
+            
+            @if (fotoSeleccionada().camara) {
+              <span class="badge"><i class="bi bi-camera-fill"></i> {{ fotoSeleccionada().camara }}</span>
+            }
+          </div>
+          
+          <div class="info-description">
+            <h4>Historia / Detalles</h4>
+            <p>{{ fotoSeleccionada().descripcion || 'Sin descripción disponible para esta fotografía.' }}</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+}
 </section>
