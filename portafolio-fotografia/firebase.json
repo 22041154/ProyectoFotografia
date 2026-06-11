@@ -1,8 +1,11 @@
 {
   "hosting": {
-    "site": "sitiofotografico-ec2b5",
-    "public": "dist/portafolio-fotografia",
-    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "public": "dist\\portafolio-fotografia\\browser",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
     "rewrites": [
       {
         "source": "**",
