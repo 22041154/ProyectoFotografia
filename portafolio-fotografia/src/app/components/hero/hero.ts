@@ -1,6 +1,6 @@
 import { Component, inject, signal, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router'; // 1. Importa Router
+import { Router } from '@angular/router';
 import { AdminService } from '../../services/admin';
 
 @Component({
@@ -12,14 +12,14 @@ import { AdminService } from '../../services/admin';
 export class Hero implements OnInit {
   adminService = inject(AdminService);
   http = inject(HttpClient);
-  router = inject(Router); // 2. Inyecta el Router
+  router = inject(Router); 
 
   heroImageUrl = signal('URL_POR_DEFECTO');
   isEditing = signal(false);
   archivoSeleccionado: File | undefined;
 
   irAlPortafolio() {
-    this.router.navigate(['/portafolio']); // Ajusta la ruta según cómo se llame tu sección de portafolio
+    this.router.navigate(['/portafolio']); 
   }
 
   ngOnInit() {
@@ -27,7 +27,7 @@ export class Hero implements OnInit {
   }
 
   cargarConfiguracion() {
-    this.http.get<any>('http://localhost:3000/hero').subscribe(data => {
+    this.http.get<any>('https://api-portafolio-04g4.onrender.com/hero').subscribe(data => {
       if (data?.imageUrl) this.heroImageUrl.set(data.imageUrl);
     });
   }
@@ -42,15 +42,21 @@ export class Hero implements OnInit {
     const formData = new FormData();
     formData.append('file', this.archivoSeleccionado);
 
-    this.http.post('http://localhost:3000/hero', formData).subscribe((data: any) => {
-      // Asumiendo que el backend te devuelve { imageUrl: '...' }
+    this.http.post('https://api-portafolio-04g4.onrender.com/hero', formData).subscribe((data: any) => {
       this.heroImageUrl.set(data.imageUrl);
       this.isEditing.set(false);
-      this.archivoSeleccionado = undefined; // Limpiamos para la próxima
+      this.archivoSeleccionado = undefined; 
     });
   }
 
   activarEdicion() {
     this.isEditing.set(true);
   }
+
+  navegarA(seccion: string) {
+  const elemento = document.getElementById(seccion);
+  if (elemento) {
+    elemento.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
 }

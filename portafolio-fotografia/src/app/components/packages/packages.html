@@ -40,19 +40,16 @@
 
     </div>
   }
-  <!-- Tarjetas de Paquetes (Vista Pública) -->
   <div class="packages-grid">
     @for (paquete of paquetes(); track paquete.id) {
       <div class="package-card">
         
-        <!-- Botón de eliminar (Solo Admin) -->
         @if (adminService.isAdmin()) {
           <button class="btn-delete-photo" (click)="eliminarPaquete(paquete.id)">
             <i class="bi bi-trash3-fill"></i>
           </button>
         }
         
-        <!-- Etiqueta que agregamos -->
         @if (paquete.etiqueta) {
           <span class="package-badge"><i class="bi bi-tag-fill"></i> {{ paquete.etiqueta }}</span>
         }

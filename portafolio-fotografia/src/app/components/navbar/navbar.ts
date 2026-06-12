@@ -14,7 +14,6 @@ export class Navbar {
   showLoginModal = signal(false);
 
   constructor() {
-    // Cerrar el modal automáticamente cuando el usuario se autentica
     effect(() => {
       if (this.adminService.isAdmin() && this.showLoginModal()) {
         this.showLoginModal.set(false);
@@ -24,10 +23,8 @@ export class Navbar {
 
   toggleAdmin() {
     if (this.adminService.isAdmin()) {
-      // Si está autenticado, cerrar sesión
       this.adminService.logout();
     } else {
-      // Si no está autenticado, mostrar modal de login
       this.showLoginModal.set(true);
     }
   }

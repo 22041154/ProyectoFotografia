@@ -13,7 +13,6 @@ export class About implements OnInit {
   http = inject(HttpClient);
 
   semblanzaText = signal('Cargando semblanza...');
-  // Añadimos una señal para guardar la URL de la imagen que viene de la BD
   imagenUrl = signal('assets/profile.jpg'); 
   isEditing = signal(false);
   archivoSeleccionado: File | undefined;
@@ -23,7 +22,7 @@ export class About implements OnInit {
   }
 
   cargarSemblanza() {
-    this.http.get<any>('http://localhost:3000/about').subscribe(data => {
+    this.http.get<any>('https://api-portafolio-04g4.onrender.com/about').subscribe(data => {
       if (data) {
         if (data.texto) this.semblanzaText.set(data.texto);
         if (data.imagenUrl) this.imagenUrl.set(data.imagenUrl);
@@ -47,7 +46,7 @@ export class About implements OnInit {
       formData.append('file', this.archivoSeleccionado);
     }
 
-    this.http.post('http://localhost:3000/about', formData).subscribe((data: any) => {
+    this.http.post('https://api-portafolio-04g4.onrender.com/about', formData).subscribe((data: any) => {
       this.semblanzaText.set(nuevoTexto);
       if (data.imagenUrl) this.imagenUrl.set(data.imagenUrl);
       this.isEditing.set(false);

@@ -8,25 +8,25 @@
 .about-container {
   display: flex;
   align-items: center;
-  max-width: 1000px; /* Ancho máximo para que no se estire demasiado en pantallas grandes */
+  max-width: 1000px; 
   width: 100%;
-  gap: 60px; /* Espacio entre la imagen y el texto */
+  gap: 60px; 
 }
 
 .about-image {
-  flex: 1; /* Ocupa la mitad del contenedor */
+  flex: 1; 
 }
 
 .about-image img {
   width: 100%;
   height: auto;
-  border-radius: 15px; /* Bordes redondeados como en tu diseño */
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Sombra sutil */
+  border-radius: 15px; 
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
   object-fit: cover;
 }
 
 .about-text {
-  flex: 1; /* Ocupa la otra mitad */
+  flex: 1; 
 }
 
 .about-text h2 {
@@ -40,7 +40,6 @@
   font-size: 1.1rem;
 }
 
-/* Responsividad básica para pantallas pequeñas */
 @media (max-width: 768px) {
   .about-container {
     flex-direction: column;
@@ -64,7 +63,6 @@
   gap: 8px;
 }
 
-/* --- ESTILOS MODO EDICIÓN --- */
 .edit-mode-container {
   display: flex;
   flex-direction: column;
@@ -81,7 +79,7 @@
   font-family: inherit;
   font-size: 1rem;
   color: #333;
-  resize: vertical; /* Permite cambiar el tamaño solo hacia abajo */
+  resize: vertical; 
 }
 
 .edit-actions {

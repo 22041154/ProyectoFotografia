@@ -6,20 +6,19 @@ import { Router } from '@angular/router';
   selector: 'app-login',
   standalone: true,
   templateUrl: './login.html',
-  styleUrl: './login.css' // Si tienes un archivo CSS para este componente
+  styleUrl: './login.css' 
 })
 export class Login {
   private adminService = inject(AdminService);
   private router = inject(Router);
   
-  // Señal para mostrar errores de contraseña incorrecta
   error = signal('');
 
   async iniciarSesion(email: string, pass: string) {
     try {
-      this.error.set(''); // Limpiamos errores previos
+      this.error.set(''); 
       await this.adminService.login(email, pass);
-      this.router.navigate(['/']); // ¡Éxito! Te mandamos a la página de inicio
+      this.router.navigate(['/']); 
     } catch (e) {
       this.error.set('Correo o contraseña incorrectos. Intenta de nuevo.');
     }

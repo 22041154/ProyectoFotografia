@@ -25,10 +25,10 @@
 .contact-card {
   background-color: #ffffff;
   border-radius: 15px;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.08); /* Sombra amplia y suave */
+  box-shadow: 0 8px 30px rgba(0,0,0,0.08); 
   padding: 40px;
   width: 100%;
-  max-width: 400px; /* Ancho de la tarjeta */
+  max-width: 400px; 
   text-align: center;
 }
 

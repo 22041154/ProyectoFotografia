@@ -12,7 +12,6 @@ export class Packages implements OnInit {
   adminService = inject(AdminService);
   http = inject(HttpClient);
 
-  // Lista para guardar los paquetes que vienen de Firebase
   paquetes = signal<any[]>([]);
 
   ngOnInit() {
@@ -20,7 +19,7 @@ export class Packages implements OnInit {
   }
 
   cargarPaquetes() {
-    this.http.get<any[]>('http://localhost:3000/packages').subscribe(data => {
+    this.http.get<any[]>('https://api-portafolio-04g4.onrender.com/packages').subscribe(data => {
       this.paquetes.set(data);
     });
   }
@@ -34,13 +33,13 @@ export class Packages implements OnInit {
     const listaCaracteristicas = caracteristicasTexto.split(',').map(item => item.trim());
 
     const nuevoPaquete = {
-      etiqueta, // <-- Agregamos el nuevo campo aquí
+      etiqueta, 
       titulo,
       precio: Number(precio),
       caracteristicas: listaCaracteristicas
     };
 
-    this.http.post('http://localhost:3000/packages', nuevoPaquete).subscribe(() => {
+    this.http.post('https://api-portafolio-04g4.onrender.com/packages', nuevoPaquete).subscribe(() => {
       this.cargarPaquetes();
       alert('¡Paquete guardado con éxito!');
     });
@@ -48,7 +47,7 @@ export class Packages implements OnInit {
 
   eliminarPaquete(id: string) {
     if(confirm('¿Estás seguro de eliminar este paquete?')) {
-      this.http.delete(`http://localhost:3000/packages/${id}`).subscribe(() => {
+      this.http.delete(`https://api-portafolio-04g4.onrender.com/packages/${id}`).subscribe(() => {
         this.cargarPaquetes(); 
       });
     }

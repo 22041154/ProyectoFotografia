@@ -4,7 +4,7 @@
   align-items: center;
   padding: 15px 50px;
   background-color: #ffffff;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Sombra ligera como en la imagen */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05); 
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -27,7 +27,7 @@
 }
 
 .nav-links a:hover {
-  color: #e60023; /* Un toque de rojo al pasar el mouse */
+  color: #e60023; 
 }
 
 .btn-admin {
@@ -56,7 +56,6 @@
   transform: scale(1.05); 
 }
 
-/* Modal Styles */
 .modal-overlay {
   position: fixed;
   top: 0;

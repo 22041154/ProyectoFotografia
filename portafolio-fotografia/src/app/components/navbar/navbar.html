@@ -1,12 +1,12 @@
 <header class="navbar">
   <div class="logo">
-    <a href="#inicio">
+    <a href="#hero">
       <img src="images/logo.jpeg" alt="Logo Elí Aramburo">
     </a>
   </div>
   <nav>
     <ul class="nav-links">
-      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#hero">Inicio</a></li>
       <li><a href="#semblanza">Semblanza</a></li>
       <li><a href="#portafolio">Portafolio</a></li>
       <li><a href="#paquetes">Paquetes</a></li>
@@ -18,7 +18,6 @@
     {{ adminService.isAdmin() ? 'Cerrar Sesión' : 'Iniciar Sesión' }}
   </button>
 
-  <!-- Modal de Login -->
   @if (showLoginModal()) {
     <div class="modal-overlay" (click)="closeLoginModal()">
       <div class="modal-content" (click)="$event.stopPropagation()">

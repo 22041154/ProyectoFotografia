@@ -107,8 +107,6 @@ html {
   background-color: #ff002b;
 }
 
-/* Modal de edición (el fondo del formulario) */
-/* --- ESTILO DEL PANEL DE ADMINISTRACIÓN (Arriba a la izquierda) --- */
 .hero-edit-modal {
   position: absolute;
   top: 20px;
@@ -138,13 +136,12 @@ html {
   transition: background 0.2s;
 }
 
-.hero-edit-modal button:first-of-type { background: #111; color: white; } /* Guardar */
-.hero-edit-modal button:last-of-type { background: #ddd; } /* Cancelar */
+.hero-edit-modal button:first-of-type { background: #111; color: white; }
+.hero-edit-modal button:last-of-type { background: #ddd; }
 
-/* --- ESTILO DEL BOTÓN "VER PORTAFOLIO" (Sin subrayado) --- */
 .btn-ver-portafolio {
-  display: inline-block; /* Importante para que tome el diseño de botón */
-  text-decoration: none; /* QUITA EL SUBRAYADO */
+  display: inline-block; 
+  text-decoration: none; 
   background-color: #e60023;
   color: white !important;
   padding: 12px 30px;
@@ -158,5 +155,5 @@ html {
 .btn-ver-portafolio:hover {
   transform: scale(1.05);
   background-color: #ff002b;
-  text-decoration: none; /* Asegura que no aparezca al pasar el mouse */
+  text-decoration: none; 
 }
